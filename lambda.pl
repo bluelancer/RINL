@@ -39,15 +39,15 @@
 
 :- use_module(sentenceTestSuite,[sentence/2]).
 
-%% :- [englishGrammar].
-%% :- [englishLexicon].
-%% :- [semLexLambda].
-%% :- [semRulesLambda].
+:- [englishGrammar].
+:- [englishLexicon].
+:- [semLexLambda].
+:- [semRulesLambda].
 
-:- [indoGrammar].
-:- [indoLexicon].
-:- [indoSemLexLambda].
-:- [indoSemRulesLambda].
+%% :- [indoGrammar].
+%% :- [indoLexicon].
+%% :- [indoSemLexLambda].
+%% :- [indoSemRulesLambda].
 
 
 /*========================================================================
