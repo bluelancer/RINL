@@ -37,7 +37,8 @@
 
 :- use_module(betaConversion,[betaConvert/2]).
 
-:- use_module(sentenceTestSuite,[sentence/2]).
+%% :- use_module(sentenceTestSuite,[sentence/2]).
+:- use_module(indoSentenceTestSuite,[sentence/2]).
 
 :- [englishGrammar].
 :- [englishLexicon].
