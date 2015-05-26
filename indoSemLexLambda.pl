@@ -29,10 +29,6 @@ semLex(det,M):-
    M = [type:indef,
         sem:lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))].
 
-semLex(det,M):-
-   M = [type:wh,
-        sem:lam(P,lam(Q,que(X,app(P,X),app(Q,X))))].
-
 semLex(pn,M):-
    M = [symbol:Sym,
         sem:lam(P,app(P,Sym))].
@@ -52,40 +48,11 @@ semLex(tv,M):-
         sem:lam(K,lam(Y,app(K,lam(X,Formula))))], 
    compose(Formula,Sym,[Y,X]).
 
-semLex(qnp,M):-
-   M = [type:wh,
-        symbol:Sym,
-        sem:lam(Q,que(X,Formula,app(Q,X)))], 
-   compose(Formula,Sym,[X]).
-
-semLex(cop,M):-
-   M = [pol:pos,
-        sem:lam(K,lam(Y,app(K,lam(X,eq(Y,X)))))];
-   M = [pol:neg,
-        sem:lam(K,lam(Y,not(app(K,lam(X,eq(Y,X))))))].
-
-semLex(relpro,M):-
-   M = [sem:lam(P,lam(Q,lam(X,and(app(P,X),app(Q,X)))))].
-
 semLex(prep,M):-
    M = [symbol:Sym,
         sem:lam(K,lam(P,lam(Y,and(app(K,lam(X,F)),app(P,Y)))))],
    compose(F,Sym,[Y,X]).
 
-semLex(adj,M):-
-   M = [symbol:Sym,
-        sem:lam(P,lam(X,and(F,app(P,X))))],
-   compose(F,Sym,[X]).
-
-semLex(av,M):-
-   M = [pol:neg,
-        sem:lam(P,lam(X,not(app(P,X))))];
-   M = [pol:pos,
-        sem:lam(P,lam(X,app(P,X)))].
-
 semLex(coord,M):-
    M = [type:conj,
         sem:lam(X,lam(Y,lam(P,and(app(X,P),app(Y,P)))))];  
-   M = [type:disj,
-        sem:lam(X,lam(Y,lam(P,or(app(X,P),app(Y,P)))))].
-
