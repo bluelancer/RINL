@@ -32,41 +32,20 @@ combine(t:Converted,[q:Sem]):-
    betaConvert(Sem,Converted).
 
 combine(s:app(A,B),[np:A,vp:B]).
-combine(s:app(A,B),[s:A,s:B]).
-combine(s:lam(B,imp(S,B)),[if:S]).
-combine(s:lam(B,or(S,B)),[either:S]).
-combine(s:S,[then:S]).
-combine(s:S,[or:S]).
-
-combine(sinv:app(B,app(A,C)),[av:A,np:B,vp:C]).
-
-combine(q:app(A,B),[whnp:A,vp:B]).
-combine(q:A,[sinv:A]).
 
 combine(np:app(app(B,A),C),[np:A,coord:B,np:C]).
 combine(np:app(A,B),[det:A,n:B]).
 combine(np:A,[pn:A]).
-combine(np:A,[qnp:A]).
-
-combine(whnp:app(A,B),[det:A,n:B]).
-combine(whnp:A,[qnp:A]).
 
 combine(n:app(app(B,A),C),[n:A,coord:B,n:C]).
-combine(n:app(A,B),[adj:A,n:B]).
 combine(n:A,[noun:A]).
 combine(n:app(B,A),[noun:A,nmod:B]).
 
 combine(nmod:A,[pp:A]).
-combine(nmod:A,[rc:A]).
 combine(nmod:lam(P,app(A,app(B,P))),[pp:A,nmod:B]).
 
 combine(vp:app(app(B,A),C),[vp:A,coord:B,vp:C]).
-combine(vp:app(A,B),[av:A,vp:B]).
-combine(vp:app(A,B),[cop:A,np:B]).
 combine(vp:A,[iv:A]).
 combine(vp:app(A,B),[tv:A,np:B]).
 
 combine(pp:app(A,B),[prep:A,np:B]).
-
-combine(rc:app(A,B),[relpro:A,vp:B]).
-

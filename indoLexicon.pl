@@ -25,10 +25,10 @@
    Determiners
 ========================================================================*/
 
-lexEntry(det,[syntax:[semua],mood:decl,type:uni]).
-lexEntry(det,[syntax:[seorang],mood:decl,type:indef]).
-lexEntry(det,[syntax:[seekor],mood:decl,type:indef]).
-lexEntry(det,[syntax:[sebuah],mood:decl,type:indef]).
+lexEntry(det,[syntax:[semua],type:uni]).
+lexEntry(det,[syntax:[seorang],type:indef]).
+lexEntry(det,[syntax:[seekor],type:indef]).
+lexEntry(det,[syntax:[sebuah],type:indef]).
 
 /*========================================================================
    Nouns
@@ -36,8 +36,8 @@ lexEntry(det,[syntax:[sebuah],mood:decl,type:indef]).
 
 lexEntry(noun,[symbol:harimau,syntax:[harimau]]).
 lexEntry(noun,[symbol:buku,syntax:[buku]]).
-lexEntry(noun,[symbol:dosen,syntax:[dosen]).
-lexEntry(noun,[symbol:mahasiswa,syntax:[mahasiswa]).
+lexEntry(noun,[symbol:dosen,syntax:[dosen]]).
+lexEntry(noun,[symbol:mahasiswa,syntax:[mahasiswa]]).
 
 /*========================================================================
    Proper Names

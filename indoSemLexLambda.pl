@@ -55,4 +55,4 @@ semLex(prep,M):-
 
 semLex(coord,M):-
    M = [type:conj,
-        sem:lam(X,lam(Y,lam(P,and(app(X,P),app(Y,P)))))];  
+        sem:lam(X,lam(Y,lam(P,and(app(X,P),app(Y,P)))))]. 
