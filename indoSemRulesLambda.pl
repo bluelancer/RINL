@@ -36,16 +36,22 @@ combine(s:app(A,B),[np:A,vp:B]).
 combine(np:app(app(B,A),C),[np:A,coord:B,np:C]).
 combine(np:app(A,B),[det:A,n:B]).
 combine(np:A,[pn:A]).
+%% combine(np:lam(P,app(A,app(B,P))),[np:A,pp:B]). %% tambahan
 
 combine(n:app(app(B,A),C),[n:A,coord:B,n:C]).
 combine(n:A,[noun:A]).
-combine(n:app(B,A),[noun:A,nmod:B]).
+%% combine(n:app(B,A),[noun:A,nmod:B]).
 
-combine(nmod:A,[pp:A]).
-combine(nmod:lam(P,app(A,app(B,P))),[pp:A,nmod:B]).
+%% combine(nmod:A,[pp:A]).
+%% combine(nmod:lam(P,app(A,app(B,P))),[pp:A,nmod:B]).
 
 combine(vp:app(app(B,A),C),[vp:A,coord:B,vp:C]).
 combine(vp:A,[iv:A]).
 combine(vp:app(A,B),[tv:A,np:B]).
+
+%% combine(vp:app(A,B),[vp:A,pp:B]).
+%% combine(vp:A,[iv:A,np:B]). %% tambahan
+combine(vp:app(B,A),[iv:A,pp:B]).
+
 
 combine(pp:app(A,B),[prep:A,np:B]).

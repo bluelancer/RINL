@@ -39,3 +39,9 @@ sentence([anto,berlari,dari,seekor,harimau],1).
 sentence([anto,dan,seorang,dosen,berlari],1).
 
 sentence([semua,mahasiswa,berlari,dan,membaca,sebuah,buku],1).
+
+
+
+sentence([anto,berlari],1).
+
+sentence([anto,membaca,sebuah,buku],1).

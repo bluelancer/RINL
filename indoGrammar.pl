@@ -67,34 +67,38 @@ np([coord:no,gap:[],sem:NP])-->
    {combine(np:NP,[pn:PN])}.
 
 %% todo: NP PP
+%% np([coord:no,gap:[],sem:NP])--> 
+%%    np([coord:_,gap:[],sem:NP1]), 
+%%    pp([sem:PP]),
+%%    {combine(np:NP,[np:NP1,pp:PP])}. 
 
 /*========================================================================
    Nouns
 ========================================================================*/
 
-n([coord:yes,sem:N])--> 
-   n([coord:no,sem:N1]), 
-   coord([type:_,sem:C]),  
-   n([coord:_,sem:N2]),
-   {combine(n:N,[n:N1,coord:C,n:N2])}.
+%% n([coord:yes,sem:N])--> 
+%%    n([coord:no,sem:N1]), 
+%%    coord([type:_,sem:C]),  
+%%    n([coord:_,sem:N2]),
+%%    {combine(n:N,[n:N1,coord:C,n:N2])}.
 
-n([coord:no,sem:N])--> 
+n([coord:no,sem:N])-->
    noun([sem:Noun]),
    {combine(n:N,[noun:Noun])}.
 
-n([coord:no,sem:Sem])--> 
-   noun([sem:N]), 
-   nmod([sem:PP]),
-   {combine(n:Sem,[noun:N,nmod:PP])}. 
+%% n([coord:no,sem:Sem])--> 
+%%    noun([sem:N]), 
+%%    nmod([sem:PP]),
+%%    {combine(n:Sem,[noun:N,nmod:PP])}. 
 
-nmod([sem:N])--> 
-   pp([sem:PP]),
-   {combine(nmod:N,[pp:PP])}.
+%% nmod([sem:N])--> 
+%%    pp([sem:PP]),
+%%    {combine(nmod:N,[pp:PP])}.
 
-nmod([sem:Sem])--> 
-   pp([sem:PP]), 
-   nmod([sem:NMod]),
-   {combine(nmod:Sem,[pp:PP,nmod:NMod])}.
+%% nmod([sem:Sem])--> 
+%%    pp([sem:PP]), 
+%%    nmod([sem:NMod]),
+%%    {combine(nmod:Sem,[pp:PP,nmod:NMod])}.
 
 
 /*========================================================================
@@ -120,6 +124,17 @@ vp([coord:no,gap:G,sem:VP])-->
    {combine(vp:VP,[tv:TV,np:NP])}.
 
 %%  todo: VP -> VP PP
+%% vp([coord:no,gap:G,sem:VP])-->   
+%%    vp([coord:_,gap:G,sem:VP1]),
+%%    pp([sem:PP]),
+%%    {combine(vp:VP,[vp:VP1,pp:PP])}.
+
+vp([coord:no,gap:[],sem:VP])--> 
+   iv([sem:IV]), 
+   pp([sem:PP]),
+   {combine(vp:VP,[iv:IV,pp:PP])}.
+
+
 
 /*========================================================================
    Prepositional Phrases
