@@ -40,8 +40,16 @@ sentence([anto,dan,seorang,dosen,berlari],1).
 
 sentence([semua,mahasiswa,berlari,dan,membaca,sebuah,buku],1).
 
+sentence([anto,membaca,sebuah,buku,dari,seorang,dosen],1).
 
+sentence([seorang,mahasiswa,membaca,sebuah,buku,dari,seorang,dosen],1).
 
 sentence([anto,berlari],1).
 
 sentence([anto,membaca,sebuah,buku],1).
+
+sentence([anto,dari,seekor,harimau,berlari],1).
+
+sentence([seorang,dosen,dari,seekor,harimau,berlari],1).
+
+sentence([seorang,dosen,berlari,dari,seekor,harimau],1).
