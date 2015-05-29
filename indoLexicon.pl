@@ -25,19 +25,19 @@
    Determiners
 ========================================================================*/
 
-lexEntry(det,[syntax:[semua],type:uni]).
-lexEntry(det,[syntax:[seorang],type:indef]).
-lexEntry(det,[syntax:[seekor],type:indef]).
-lexEntry(det,[syntax:[sebuah],type:indef]).
+lexEntry(det,[syntax:[semua],type:uni,fs:_]).
+lexEntry(det,[syntax:[seorang],type:indef,fs:man]).
+lexEntry(det,[syntax:[seekor],type:indef,fs:animal]).
+lexEntry(det,[syntax:[sebuah],type:indef,fs:thing]).
 
 /*========================================================================
    Nouns
 ========================================================================*/
 
-lexEntry(noun,[symbol:harimau,syntax:[harimau]]).
-lexEntry(noun,[symbol:buku,syntax:[buku]]).
-lexEntry(noun,[symbol:dosen,syntax:[dosen]]).
-lexEntry(noun,[symbol:mahasiswa,syntax:[mahasiswa]]).
+lexEntry(noun,[symbol:harimau,syntax:[harimau],fs:animal]).
+lexEntry(noun,[symbol:buku,syntax:[buku],fs:thing]).
+lexEntry(noun,[symbol:dosen,syntax:[dosen],fs:man]).
+lexEntry(noun,[symbol:mahasiswa,syntax:[mahasiswa],fs:man]).
 
 /*========================================================================
    Proper Names
@@ -49,7 +49,7 @@ lexEntry(pn,[symbol:anto,syntax:[anto]]).
    Intransitive Verbs
 ========================================================================*/
 
-lexEntry(iv, [symbol:berlari,syntax:[berlari]]).
+lexEntry(iv, [symbol:berlari,syntax:[berlari],fs:]).
 
 /*========================================================================
    Transitive Verbs

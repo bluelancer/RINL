@@ -28,9 +28,6 @@
 combine(t:Converted,[s:Sem]):- 
    betaConvert(Sem,Converted).
 
-combine(t:Converted,[q:Sem]):- 
-   betaConvert(Sem,Converted).
-
 combine(s:app(A,B),[np:A,vp:B]).
 
 combine(np:app(app(B,A),C),[np:A,coord:B,np:C]).
