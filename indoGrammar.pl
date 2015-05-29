@@ -38,8 +38,8 @@ t([sem:T])-->
 ========================================================================*/
 
 s([coord:no,sem:Sem])--> 
-   np([coord:_,gap:[],sem:NP]), 
-   vp([coord:_,gap:[],sem:VP]), 
+   np([coord:_,sem:NP]), 
+   vp([coord:_,sem:VP]), 
    {combine(s:Sem,[np:NP,vp:VP])}.
 
 /*========================================================================
@@ -47,26 +47,25 @@ s([coord:no,sem:Sem])-->
 ========================================================================*/
 
 %% NP dan NP
-np([coord:yes,gap:[],sem:NP])--> 
-   np([coord:no,gap:[],sem:NP1]), 
+np([coord:yes,sem:NP])--> 
+   np([coord:no,sem:NP1]), 
    coord([type:conj,sem:C]), 
-   np([coord:_,gap:[],sem:NP2]), 
+   np([coord:_,sem:NP2]), 
    {combine(np:NP,[np:NP1,coord:C,np:NP2])}.
 
 % NP -> Det N
-
-np([coord:no,gap:[],sem:NP])--> 
+np([coord:no,sem:NP])--> 
    det([fs:F,type:_,sem:Det]), 
    n([coord:_,fs:F,sem:N]), 
    {combine(np:NP,[det:Det,n:N])}.
 
 % NP -> PN
-np([coord:no,gap:[],sem:NP])--> 
+np([coord:no,sem:NP])--> 
    pn([sem:PN]), 
    {combine(np:NP,[pn:PN])}.
 
 % NP -> PN PP
-np([coord:no,gap:[],sem:NP])--> 
+np([coord:no,sem:NP])--> 
    pn([sem:PN]), 
    pp([sem:PP]),
    {combine(np:NP,[pn:PN,pp:PP])}.
@@ -93,25 +92,25 @@ nmod([sem:N])-->
 ========================================================================*/
 
 %% VP -> VP dan VP
-vp([coord:yes,gap:[],sem:VP])--> 
-   vp([coord:no,gap:[],sem:VP1]), 
+vp([coord:yes,sem:VP])--> 
+   vp([coord:no,sem:VP1]), 
    coord([type:conj,sem:C]), 
-   vp([coord:_,gap:[],sem:VP2]),
+   vp([coord:_,sem:VP2]),
    {combine(vp:VP,[vp:VP1,coord:C,vp:VP2])}.
 
 %%  VP -> IV
-vp([coord:no,gap:[],sem:VP])--> 
+vp([coord:no,sem:VP])--> 
    iv([sem:IV]), 
    {combine(vp:VP,[iv:IV])}.
 
 %%  VP -> TV NP
-vp([coord:no,gap:G,sem:VP])-->   
+vp([coord:no,sem:VP])-->   
    tv([sem:TV]), 
-   np([coord:_,gap:G,sem:NP]), 
+   np([coord:_,sem:NP]), 
    {combine(vp:VP,[tv:TV,np:NP])}.
 
 %%  VP -> IV PP
-vp([coord:no,gap:[],sem:VP])--> 
+vp([coord:no,sem:VP])--> 
    iv([sem:IV]), 
    pp([sem:PP]),
    {combine(vp:VP,[iv:IV,pp:PP])}.
@@ -122,7 +121,7 @@ vp([coord:no,gap:[],sem:VP])-->
 
 pp([sem:PP])--> 
    prep([sem:Prep]), 
-   np([coord:_,gap:[],sem:NP]), 
+   np([coord:_,sem:NP]), 
    {combine(pp:PP,[prep:Prep,np:NP])}.
 
 /*========================================================================

@@ -49,7 +49,7 @@ lexEntry(pn,[symbol:anto,syntax:[anto]]).
    Intransitive Verbs
 ========================================================================*/
 
-lexEntry(iv, [symbol:berlari,syntax:[berlari],fs:]).
+lexEntry(iv, [symbol:berlari,syntax:[berlari]]).
 
 /*========================================================================
    Transitive Verbs
