@@ -37,10 +37,7 @@ combine(np:lam(P,app(A,app(B,P))),[pn:A,pp:B]).
 
 combine(n:app(app(B,A),C),[n:A,coord:B,n:C]).
 combine(n:A,[noun:A]).
-combine(n:app(B,A),[noun:A,nmod:B]).
-
-combine(nmod:A,[pp:A]).
-%% combine(nmod:lam(P,app(A,app(B,P))),[pp:A,nmod:B]).
+combine(n:app(B,A),[noun:A,pp:B]).
 
 combine(vp:app(app(B,A),C),[vp:A,coord:B,vp:C]).
 combine(vp:A,[iv:A]).

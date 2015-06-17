@@ -25,19 +25,19 @@
    Determiners
 ========================================================================*/
 
-lexEntry(det,[syntax:[semua],type:uni,fs:_]).
-lexEntry(det,[syntax:[seorang],type:indef,fs:man]).
-lexEntry(det,[syntax:[seekor],type:indef,fs:animal]).
-lexEntry(det,[syntax:[sebuah],type:indef,fs:thing]).
+lexEntry(det,[syntax:[semua],type:uni,class:_]).
+lexEntry(det,[syntax:[seorang],type:indef,class:man]).
+lexEntry(det,[syntax:[seekor],type:indef,class:animal]).
+lexEntry(det,[syntax:[sebuah],type:indef,class:thing]).
 
 /*========================================================================
    Nouns
 ========================================================================*/
 
-lexEntry(noun,[symbol:harimau,syntax:[harimau],fs:animal]).
-lexEntry(noun,[symbol:buku,syntax:[buku],fs:thing]).
-lexEntry(noun,[symbol:dosen,syntax:[dosen],fs:man]).
-lexEntry(noun,[symbol:mahasiswa,syntax:[mahasiswa],fs:man]).
+lexEntry(noun,[symbol:harimau,syntax:[harimau],class:animal]).
+lexEntry(noun,[symbol:buku,syntax:[buku],class:thing]).
+lexEntry(noun,[symbol:dosen,syntax:[dosen],class:man]).
+lexEntry(noun,[symbol:mahasiswa,syntax:[mahasiswa],class:man]).
 
 /*========================================================================
    Proper Names

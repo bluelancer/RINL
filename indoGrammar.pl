@@ -55,8 +55,8 @@ np([coord:yes,sem:NP])-->
 
 % NP -> Det N
 np([coord:no,sem:NP])--> 
-   det([fs:F,type:_,sem:Det]), 
-   n([coord:_,fs:F,sem:N]), 
+   det([class:F,type:_,sem:Det]), 
+   n([coord:_,class:F,sem:N]), 
    {combine(np:NP,[det:Det,n:N])}.
 
 % NP -> PN
@@ -74,18 +74,14 @@ np([coord:no,sem:NP])-->
    Nouns
 ========================================================================*/
 
-n([coord:no,fs:F,sem:N])-->
-   noun([fs:F,sem:Noun]),
+n([coord:no,class:F,sem:N])-->
+   noun([class:F,sem:Noun]),
    {combine(n:N,[noun:Noun])}.
 
-n([coord:no,fs:F,sem:Sem])--> 
-   noun([fs:F,sem:N]), 
-   nmod([sem:PP]),
-   {combine(n:Sem,[noun:N,nmod:PP])}. 
-
-nmod([sem:N])--> 
+n([coord:no,class:F,sem:Sem])--> 
+   noun([class:F,sem:N]), 
    pp([sem:PP]),
-   {combine(nmod:N,[pp:PP])}.
+   {combine(n:Sem,[noun:N,pp:PP])}. 
 
 /*========================================================================
    Verb Phrases
@@ -138,8 +134,8 @@ tv([sem:Sem])-->
    Word,
    {semLex(tv,[symbol:Sym,sem:Sem])}.
 
-det([fs:F,type:Type,sem:Det])--> 
-   {lexEntry(det,[syntax:Word,type:Type,fs:F])},
+det([class:F,type:Type,sem:Det])--> 
+   {lexEntry(det,[syntax:Word,type:Type,class:F])},
    Word,
    {semLex(det,[type:Type,sem:Det])}. 
 
@@ -158,7 +154,7 @@ coord([type:Type,sem:Sem])-->
    Word, 
    {semLex(coord,[type:Type,sem:Sem])}.
 
-noun([fs:F,sem:Sem])--> 
-   {lexEntry(noun,[symbol:Sym,syntax:Word,fs:F])},
+noun([class:F,sem:Sem])--> 
+   {lexEntry(noun,[symbol:Sym,syntax:Word,class:F])},
    Word,
    {semLex(noun,[symbol:Sym,sem:Sem])}.
