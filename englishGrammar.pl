@@ -58,6 +58,8 @@ s([coord:no,sem:Sem])-->
 
 %% Complex Sentences
 %% Overlook
+s([coord:yes,sem:Sem])--> [].
+
 s([coord:yes,sem:Sem])--> 
    s([coord:ant,sem:S1]), 
    s([coord:con,sem:S2]), 
@@ -66,6 +68,11 @@ s([coord:yes,sem:Sem])-->
 s([coord:yes,sem:Sem])--> 
    s([coord:either,sem:S1]), 
    s([coord:or,sem:S2]), 
+   {combine(s:Sem,[s:S1,s:S2])}.
+
+s([coord:yes,sem:Sem])--> 
+   s([coord:impera,sem:S1]), 
+   s([coord:yes,sem:S2]), 
    {combine(s:Sem,[s:S1,s:S2])}.
 
 %% Sub-Sentece
