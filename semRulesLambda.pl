@@ -38,6 +38,10 @@ combine(s:lam(B,or(S,B)),[either:S]).
 combine(s:S,[then:S]).
 combine(s:S,[or:S]).
 
+%% Proper Names From SCoTT
+combine(s:imprea(A),[vp:A]).
+
+
 combine(sinv:app(B,app(A,C)),[av:A,np:B,vp:C]).
 
 combine(q:app(A,B),[whnp:A,vp:B]).

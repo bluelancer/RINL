@@ -75,7 +75,13 @@ lexEntry(noun,[symbol:weapon,syntax:[weapon]]).
 lexEntry(noun,[symbol:wife,syntax:[wife]]).
 lexEntry(noun,[symbol:woman,syntax:[woman]]).
 
-
+%% Noun From SCoTT
+lexEntry(noun,[symbol:box,syntax:[box]]).
+lexEntry(noun,[symbol:plan,syntax:[plan]]).
+lexEntry(noun,[symbol:robot,syntax:[robot]]).
+lexEntry(noun,[symbol:shelf,syntax:[shelf]]).
+lexEntry(noun,[symbol:transferbelt,syntax:[transferbelt]]).
+lexEntry(noun,[symbol:transferbelt,syntax:[transfer,belt]]).
 /*========================================================================
    Proper Names
 ========================================================================*/
@@ -97,6 +103,19 @@ lexEntry(pn,[symbol:thewolf,syntax:[the,wolf]]).
 lexEntry(pn,[symbol:vincent,syntax:[vincent]]).
 lexEntry(pn,[symbol:vincent,syntax:[vincent,vega]]).
 lexEntry(pn,[symbol:yolanda,syntax:[yolanda]]).
+
+%% Proper Names From SCoTT
+lexEntry(pn,[symbol:warehousemanager,syntax:[warehouse,manager]]).
+lexEntry(pn,[symbol:warehousecontroller,syntax:[warehouse,controller]]).
+/*========================================================================
+   Pronoun Phrases
+========================================================================*/
+
+%% Pronoun Phrases From SCoTT
+lexEntry(pron,[symbol:he,syntax:[he]]).
+lexEntry(pron,[symbol:she,syntax:[she]]).
+lexEntry(pron,[symbol:it,syntax:[it]]).
+lexEntry(pron,[symbol:they,syntax:[they]]).
 
 
 /*========================================================================
@@ -209,6 +228,10 @@ lexEntry(tv,[symbol:shoot,syntax:[shot],inf:fin,num:sg]).
 lexEntry(tv,[symbol:shoot,syntax:[shoots],inf:fin,num:sg]).
 lexEntry(tv,[symbol:shoot,syntax:[shoot],inf:fin,num:pl]).
 
+%% Proper Names From SCoTT
+lexEntry(tv,[symbol:carry,syntax:[carry],inf:inf,num:sg]).
+lexEntry(tv,[symbol:carry,syntax:[carries],inf:fin,num:sg]).
+lexEntry(tv,[symbol:carry,syntax:[carry],inf:fin,num:pl]).
 
 /*========================================================================
    Copula
@@ -229,7 +252,9 @@ lexEntry(prep,[symbol:in,syntax:[in]]).
 lexEntry(prep,[symbol:of,syntax:[of]]).
 lexEntry(prep,[symbol:with,syntax:[with]]).
 
-
+%% Prepositions From SCoTT
+lexEntry(prep,[symbol:to,syntax:[to]]).
+lexEntry(prep,[symbol:by,syntax:[by]]).
 /*========================================================================
    Adjectives
 ========================================================================*/
@@ -271,5 +296,3 @@ lexEntry(av,[syntax:[does],inf:fin,num:sg,pol:pos]).
 lexEntry(av,[syntax:[does,not],inf:fin,num:sg,pol:neg]).
 lexEntry(av,[syntax:[did],inf:fin,num:sg,pol:pos]).
 lexEntry(av,[syntax:[did,not],inf:fin,num:sg,pol:neg]).
-
-

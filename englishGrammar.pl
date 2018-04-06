@@ -25,12 +25,19 @@
    Texts
 ========================================================================*/
 
+%% Single Texts
 t([sem:T])--> 
    s([coord:no,sem:S]),
    {combine(t:T,[s:S])}.
 
+%% Complex Texts
 t([sem:T])--> 
    s([coord:yes,sem:S]),
+   {combine(t:T,[s:S])}.
+
+%% Imperative Texts
+t([sem:T])--> 
+   s([coord:impera,sem:S]),
    {combine(t:T,[s:S])}.
 
 t([sem:T])--> 
@@ -42,11 +49,15 @@ t([sem:T])-->
    Sentences
 ========================================================================*/
 
+
+%% Single Sentences
 s([coord:no,sem:Sem])--> 
    np([coord:_,num:Num,gap:[],sem:NP]), 
    vp([coord:_,inf:fin,num:Num,gap:[],sem:VP]), 
    {combine(s:Sem,[np:NP,vp:VP])}.
 
+%% Complex Sentences
+%% Overlook
 s([coord:yes,sem:Sem])--> 
    s([coord:ant,sem:S1]), 
    s([coord:con,sem:S2]), 
@@ -57,6 +68,7 @@ s([coord:yes,sem:Sem])-->
    s([coord:or,sem:S2]), 
    {combine(s:Sem,[s:S1,s:S2])}.
 
+%% Sub-Sentece
 s([coord:ant,sem:Sem])--> 
    [if], 
    s([coord:no,sem:S]),
@@ -73,7 +85,7 @@ s([coord:con,sem:Sem])-->
    {combine(s:Sem,[then:S])}.
 
 s([coord:con,sem:Sem])-->
-   s([coord:no,sem:S]),
+   s([coord:no,sem: S]),
    {combine(s:Sem,[then:S])}.
 
 s([coord:or,sem:Sem])-->
@@ -86,6 +98,13 @@ sinv([gap:G,sem:S])-->
    np([coord:_,num:Num,gap:[],sem:NP]),
    vp([coord:_,inf:inf,num:Num,gap:G,sem:VP]), 
    {combine(sinv:S,[av:Sem,np:NP,vp:VP])}.
+
+%% Sentences From SCoTT
+
+%% Imperative Sentences
+s([coord:impera,sem:Sem])-->
+   vp([coord:_,inf:inf,num:Num,gap:[],sem:VP]), 
+   {combine(s:Sem,[vp:VP])}.
 
 
 /*========================================================================
