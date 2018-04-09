@@ -141,6 +141,7 @@ lexEntry(iv,[symbol:dance,syntax:[dance],inf:fin,num:pl]).
 lexEntry(iv,[symbol:die,syntax:[die],inf:inf,num:sg]).
 lexEntry(iv,[symbol:die,syntax:[dies],inf:fin,num:sg]).
 lexEntry(iv,[symbol:die,syntax:[die],inf:fin,num:pl]).
+lexEntry(iv,[symbol:die,syntax:[dead],inf:past,num:_]).
 
 lexEntry(iv,[symbol:growl,syntax:[growl],inf:inf,num:sg]).
 lexEntry(iv,[symbol:growl,syntax:[growls],inf:fin,num:sg]).
@@ -166,6 +167,8 @@ lexEntry(iv,[symbol:walk,syntax:[walk],inf:inf,num:sg]).
 lexEntry(iv,[symbol:walk,syntax:[walks],inf:fin,num:sg]).
 lexEntry(iv,[symbol:walk,syntax:[walk],inf:fin,num:pl]).
 
+lexEntry(iv,[symbol:A,syntax:[B],inf:past,num:_]):-
+  lexEntry(tv,[symbol:A,syntax:[B],inf:past,num:_]).
 
 /*========================================================================
    Transitive Verbs
@@ -174,6 +177,7 @@ lexEntry(iv,[symbol:walk,syntax:[walk],inf:fin,num:pl]).
 lexEntry(tv,[symbol:clean,syntax:[clean],inf:inf,num:sg]).
 lexEntry(tv,[symbol:clean,syntax:[cleans],inf:fin,num:sg]).
 lexEntry(tv,[symbol:clean,syntax:[clean],inf:fin,num:pl]).
+lexEntry(tv,[symbol:clean,syntax:[cleaned],inf:past,num:_]).
 
 lexEntry(tv,[symbol:drink,syntax:[drink],inf:inf,num:sg]).
 lexEntry(tv,[symbol:drink,syntax:[drinks],inf:fin,num:sg]).

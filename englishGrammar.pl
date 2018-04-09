@@ -190,14 +190,14 @@ n([coord:C,sem:Sem])-->
    n([coord:C,sem:N]), 
    {combine(n:Sem,[adj:A,n:N])}.
 
-n([coord:no,sem:N])--> 
-   noun([sem:Noun]),
-   {combine(n:N,[noun:Noun])}.
-
 n([coord:no,sem:Sem])--> 
    noun([sem:N]), 
    nmod([sem:PP]),
    {combine(n:Sem,[noun:N,nmod:PP])}. 
+
+n([coord:no,sem:N])--> 
+   noun([sem:Noun]),
+   {combine(n:N,[noun:Noun])}.
 
 nmod([sem:N])--> 
    pp([sem:PP]),
@@ -241,6 +241,21 @@ vp([coord:no,inf:I,num:Num,gap:G,sem:VP])-->
    tv([inf:I,num:Num,sem:TV]), 
    np([coord:_,num:_,gap:G,sem:NP]), 
    {combine(vp:VP,[tv:TV,np:NP])}.
+
+%% Verb Phrases From SCoTT
+%% States Structure
+
+%% be iv-ed
+vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
+   cop([inf:Inf,num:Num,sem:Cop]),
+   iv([inf:past,num:Num,sem:IV]), 
+   {combine(vp:VP,[iv:IV])}, !.
+
+%% be tv-ed
+vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
+   cop([inf:Inf,num:Num,sem:Cop]),
+   tv([inf:past,num:Num,sem:TV]), 
+   {combine(vp:VP,[iv:TV])}.
 
 
 /*========================================================================
