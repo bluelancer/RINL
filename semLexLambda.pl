@@ -69,13 +69,30 @@ semLex(relpro,M):-
 
 semLex(prep,M):-
    M = [symbol:Sym,
-        sem:lam(K,lam(P,lam(Y,and(app(K,lam(X,F)),app(P,Y)))))],
+        sem:lam(K,lam(P,lam(Y,and(app(K,lam(X,F)),app(P,Y))))),usage:attr],
    compose(F,Sym,[Y,X]).
+
+semLex(prep,M):-
+   M = [symbol:Sym,
+        sem:lam(K,lam(Y,app(K,lam(X,Formula)))),usage:pred], 
+   compose(F,Sym,[Y,X]),
+   compose(Formula,location,[F,X]).
 
 semLex(adj,M):-
    M = [symbol:Sym,
-        sem:lam(P,lam(X,and(F,app(P,X))))],
-   compose(F,Sym,[X]).
+        % sem:lam(P,lam(X,and(F,app(P,X))))],
+        sem:lam(P,lam(X,and(F,app(P,X)))),catagory:Catagory,usage:attr],
+   % compose(F,Sym,[X]).
+   compose(Formula,Sym,[X]),
+   compose(F,Catagory,[Formula,X]).
+
+semLex(adj,M):-
+   M = [symbol:Sym,
+        % sem:lam(P,lam(X,and(F,app(P,X))))],
+        sem:lam(X,F),catagory:Catagory,usage:pred],
+   % compose(F,Sym,[X]).
+   compose(Formula,Sym,[X]),
+   compose(F,Catagory,[Formula,X]).
 
 semLex(av,M):-
    M = [pol:neg,

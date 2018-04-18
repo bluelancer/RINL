@@ -39,7 +39,8 @@ combine(s:S,[then:S]).
 combine(s:S,[or:S]).
 
 %% Proper Names From SCoTT
-combine(s:imprea(A),[vp:A]).
+combine(s:A,[vp:A]).
+combine(s:app(A,B),[np:A,pred:B]).
 
 
 combine(sinv:app(B,app(A,C)),[av:A,np:B,vp:C]).
@@ -66,11 +67,21 @@ combine(nmod:lam(P,app(A,app(B,P))),[pp:A,nmod:B]).
 
 combine(vp:app(app(B,A),C),[vp:A,coord:B,vp:C]).
 combine(vp:app(A,B),[av:A,vp:B]).
+
+% copula + predicative
 combine(vp:app(A,B),[cop:A,np:B]).
+combine(vp:app(A,B),[cop:A,pred:B]).
+combine(vp:A,[pred:A]).
+
+% Predicative = np/ pp/ adj
+% combine(pred:A,[np:A]).
+
+combine(pred:A,[pp:A]).
+combine(pred:A,[adj:A]).
+
+combine(vp:app(A,B),[cop:A,pred:B]).
+
 combine(vp:A,[iv:A]).
 combine(vp:app(A,B),[tv:A,np:B]).
-
 combine(pp:app(A,B),[prep:A,np:B]).
-
 combine(rc:app(A,B),[relpro:A,vp:B]).
-

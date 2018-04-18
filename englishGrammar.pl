@@ -58,7 +58,7 @@ s([coord:no,sem:Sem])-->
 
 %% Complex Sentences
 %% Overlook
-s([coord:yes,sem:Sem])--> [].
+s([coord:yes,sem:_])--> [].
 
 s([coord:yes,sem:Sem])--> 
    s([coord:ant,sem:S1]), 
@@ -110,9 +110,15 @@ sinv([gap:G,sem:S])-->
 
 %% Imperative Sentences
 s([coord:impera,sem:Sem])-->
-   vp([coord:_,inf:inf,num:Num,gap:[],sem:VP]), 
+   vp([coord:_,inf:inf,num:_,gap:[],sem:VP]), 
    {combine(s:Sem,[vp:VP])}.
 
+%% Coupla + Predicative phase
+s([coord:no,sem:Sem])--> 
+   np([coord:_,num:Num,gap:[],sem:NP]), 
+   cop([inf:_,num:Num,sem:_]),
+   pred([sem:PRED]), 
+   {combine(s:Sem,[np:NP,pred:PRED])}.
 
 /*========================================================================
    Questions
@@ -186,7 +192,7 @@ n([coord:yes,sem:N])-->
    {combine(n:N,[n:N1,coord:C,n:N2])}.
 
 n([coord:C,sem:Sem])--> 
-   adj([sem:A]), 
+   adj([sem:A,usage:attr]), 
    n([coord:C,sem:N]), 
    {combine(n:Sem,[adj:A,n:N])}.
 
@@ -200,7 +206,7 @@ n([coord:no,sem:N])-->
    {combine(n:N,[noun:Noun])}.
 
 nmod([sem:N])--> 
-   pp([sem:PP]),
+   pp([sem:PP,usage:attr]),
    {combine(nmod:N,[pp:PP])}.
 
 nmod([sem:N])--> 
@@ -208,7 +214,7 @@ nmod([sem:N])-->
    {combine(nmod:N,[rc:RC])}.
 
 nmod([sem:Sem])--> 
-   pp([sem:PP]), 
+   pp([sem:PP,usage:attr]), 
    nmod([sem:NMod]),
    {combine(nmod:Sem,[pp:PP,nmod:NMod])}.
 
@@ -228,10 +234,23 @@ vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])-->
    vp([coord:_,inf:inf,num:Num,gap:[],sem:V2]), 
    {combine(vp:VP,[av:Mod,vp:V2])}.
 
+%% Copula + Predicative
+
 vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
-   cop([inf:Inf,num:Num,sem:Cop]), 
-   np([coord:_,num:_,gap:[],sem:NP]), 
-   {combine(vp:VP,[cop:Cop,np:NP])}.
+    cop([inf:Inf,num:Num,sem:Cop]), 
+    np([coord:_,num:_,gap:[],sem:NP]), 
+    {combine(vp:VP,[cop:Cop,np:NP])}.
+
+%%  vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
+%%     cop([inf:Inf,num:Num,sem:Cop]),    
+%%     pred([sem:PRED]),
+%%     {combine(vp:VP,[cop:Cop,pred:PRED])}.
+%%     {combine(vp:VP,[pred:PRED])}.
+
+%%  vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
+%%     cop([inf:Inf,num:Num,sem:_]), 
+%%     pp([coord:_,num:_,gap:[],sem:PP]), 
+%%     {combine(vp:VP,[iv:PP])}.
 
 vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
    iv([inf:Inf,num:Num,sem:IV]), 
@@ -243,30 +262,48 @@ vp([coord:no,inf:I,num:Num,gap:G,sem:VP])-->
    {combine(vp:VP,[tv:TV,np:NP])}.
 
 %% Verb Phrases From SCoTT
-%% States Structure
+%% States Structure: Passive Voice
 
 %% be iv-ed
 vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
-   cop([inf:Inf,num:Num,sem:Cop]),
+   cop([inf:Inf,num:Num,sem:_]),
    iv([inf:past,num:Num,sem:IV]), 
    {combine(vp:VP,[iv:IV])}, !.
 
 %% be tv-ed
 vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
-   cop([inf:Inf,num:Num,sem:Cop]),
+   cop([inf:Inf,num:Num,sem:_]),
    tv([inf:past,num:Num,sem:TV]), 
    {combine(vp:VP,[iv:TV])}.
 
+%% be Prep-ed
+%% vp([coord:no,inf:Inf,num:Num,gap:[],sem:VP])--> 
+%%  cop([inf:Inf,num:Num,sem:Cop]),
+%%   pp([sem:PP]),
+%%   {combine(vp:VP,[iv:TV])}.
 
 /*========================================================================
    Prepositional Phrases
 ========================================================================*/
 
-pp([sem:PP])--> 
-   prep([sem:Prep]), 
+pp([sem:PP,usage:Usage])--> 
+   prep([sem:Prep,usage:Usage]), 
    np([coord:_,num:_,gap:[],sem:NP]), 
    {combine(pp:PP,[prep:Prep,np:NP])}.
 
+/*========================================================================
+   Predicative Phrases
+========================================================================*/
+
+/* a box is on the shelf*/
+pred([sem:PRED]) -->
+   pp([sem:PP,usage:pred]),
+   {combine(pred:PRED,[pp:PP])}.
+
+/* a box is blue*/
+pred([sem:PRED]) -->
+   adj([sem:A,usage:pred]),
+   {combine(pred:PRED,[adj:A])}.
 
 /*========================================================================
    Relative Clauses
@@ -312,15 +349,17 @@ relpro([sem:Sem])-->
    Word,
    {semLex(relpro,[sem:Sem])}.
 
-prep([sem:Sem])--> 
+prep([sem:Sem,usage:Usage])--> 
    {lexEntry(prep,[symbol:Sym,syntax:Word])},
    Word,
-   {semLex(prep,[symbol:Sym,sem:Sem])}.
+   {semLex(prep,[symbol:Sym,sem:Sem,usage:Usage])}.
 
-adj([sem:Sem])--> 
-   {lexEntry(adj,[symbol:Sym,syntax:Word])},
+adj([sem:Sem,usage:Usage])--> 
+   % {lexEntry(adj,[symbol:Sym,syntax:Word])},
+   {lexEntry(adj,[symbol:Sym,syntax:Word,catagory:Catagory])},
    Word,
-   {semLex(adj,[symbol:Sym,sem:Sem])}.
+   % {semLex(adj,[symbol:Sym,sem:Sem])}.
+   {semLex(adj,[symbol:Sym,sem:Sem,catagory:Catagory,usage:Usage])}.
 
 av([inf:Inf,num:Num,sem:Sem])--> 
    {lexEntry(av,[syntax:Word,inf:Inf,num:Num,pol:Pol])},

@@ -167,6 +167,11 @@ lexEntry(iv,[symbol:walk,syntax:[walk],inf:inf,num:sg]).
 lexEntry(iv,[symbol:walk,syntax:[walks],inf:fin,num:sg]).
 lexEntry(iv,[symbol:walk,syntax:[walk],inf:fin,num:pl]).
 
+lexEntry(iv,[symbol:color,syntax:[color],inf:inf,num:sg]).
+lexEntry(iv,[symbol:color,syntax:[colors],inf:fin,num:sg]).
+lexEntry(iv,[symbol:color,syntax:[color],inf:fin,num:pl]).
+lexEntry(iv,[symbol:color,syntax:[colored],inf:past,num:_]).
+
 lexEntry(iv,[symbol:A,syntax:[B],inf:past,num:_]):-
   lexEntry(tv,[symbol:A,syntax:[B],inf:past,num:_]).
 
@@ -263,17 +268,16 @@ lexEntry(prep,[symbol:by,syntax:[by]]).
    Adjectives
 ========================================================================*/
 
-lexEntry(adj,[symbol:big,syntax:[big]]).
-lexEntry(adj,[symbol:blue,syntax:[blue]]).
-lexEntry(adj,[symbol:female,syntax:[female]]).
-lexEntry(adj,[symbol:happy,syntax:[happy]]).
-lexEntry(adj,[symbol:kahuna,syntax:[kahuna]]).
-lexEntry(adj,[symbol:male,syntax:[male]]).
-lexEntry(adj,[symbol:married,syntax:[married]]).
-lexEntry(adj,[symbol:red,syntax:[red]]).
-lexEntry(adj,[symbol:sad,syntax:[sad]]).
-lexEntry(adj,[symbol:small,syntax:[small]]).
-lexEntry(adj,[symbol:tall,syntax:[tall]]).
+lexEntry(adj,[symbol:big,syntax:[big],catagory:size]).
+lexEntry(adj,[symbol:blue,syntax:[blue],catagory:color]).
+lexEntry(adj,[symbol:female,syntax:[female],catagory:gender]).
+lexEntry(adj,[symbol:happy,syntax:[happy],catagory:mood]).
+lexEntry(adj,[symbol:male,syntax:[male],catagory:gender]).
+%% lexEntry(adj,[symbol:married,syntax:[married]]).
+lexEntry(adj,[symbol:red,syntax:[red],catagory:color]).
+lexEntry(adj,[symbol:sad,syntax:[sad],catagory:mood]).
+lexEntry(adj,[symbol:small,syntax:[small],catagory:size]).
+lexEntry(adj,[symbol:tall,syntax:[tall],catagory:size]).
 
 
 /*========================================================================
