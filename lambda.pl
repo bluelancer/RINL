@@ -40,6 +40,14 @@
 %% :- use_module(sentenceTestSuite,[sentence/2]).
 :- use_module(indoSentenceTestSuite,[sentence/2]).
 
+:- use_module(parseRDF,[parseRDF/2,
+          first_atom_uppercase/2,
+          find_text/2,
+          find_sent/2,
+          find_object/3,
+          find_subject/3,
+          find_predicate/4]).
+
 :- [englishGrammar].
 :- [englishLexicon].
 :- [semLexLambda].
@@ -58,7 +66,9 @@
 lambda:-
 	readLine(Sentence),
         lambda(Sentence,Sems),
-	printRepresentations(Sems).
+	printRepresentations(Sems),
+  parseRDF(Sems,RDF).
+%%  printRepresentations(RDF).
 
 lambda(Sentence,Sems):-
 	setof(Sem,t([sem:Sem],Sentence,[]),Sems).
@@ -72,7 +82,7 @@ lambdaTestSuite:-
 	nl, write('>>>>> LAMBDA ON SENTENCE TEST SUITE <<<<< '), nl,
         sentence(Sentence,_),
         nl, write('Sentence: '), write(Sentence),
-	lambda(Sentence,Formulas),
+	 lambda(Sentence,Formulas),
 	printRepresentations(Formulas),
         fail.
 

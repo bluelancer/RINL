@@ -107,6 +107,11 @@ lexEntry(pn,[symbol:yolanda,syntax:[yolanda]]).
 %% Proper Names From SCoTT
 lexEntry(pn,[symbol:warehousemanager,syntax:[warehouse,manager]]).
 lexEntry(pn,[symbol:warehousecontroller,syntax:[warehouse,controller]]).
+
+lexEntry(pn,[symbol:a,syntax:[a]]).
+lexEntry(pn,[symbol:b,syntax:[b]]).
+lexEntry(pn,[symbol:c,syntax:[c]]).
+
 /*========================================================================
    Pronoun Phrases
 ========================================================================*/
@@ -262,6 +267,7 @@ lexEntry(prep,[symbol:of,syntax:[of]]).
 lexEntry(prep,[symbol:with,syntax:[with]]).
 
 %% Prepositions From SCoTT
+lexEntry(prep,[symbol:on,syntax:[on]]).
 lexEntry(prep,[symbol:to,syntax:[to]]).
 lexEntry(prep,[symbol:by,syntax:[by]]).
 /*========================================================================
